@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>贵阳同志会所导航</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.js"></script>
+  <link rel="stylesheet" href="css/index.css">
+</head> 
+<body>
+  
+              <header>
+                <div class="collapse " style="background-color: #787474"id="navbarHeader">
+                  <div class="container">
+                    <div class="row">
+                      <div class="col-sm-8 col-md-7 py-4">
+                        <h4 class="text-white">about</h4>
+                        <p class="text-white">茫茫人海，每一场遇见，都是一场美丽；每一次擦肩，都是一种缘分；红尘陌上，一种缘分，没有预约，但凡遇见，便是温暖。</p>
+                      </div>
+                      <div class="col-sm-4 offset-md-1 py-4">
+                        <h4 class="text-white">Contact</h4>
+                        <ul class="list-unstyled">
+                          <li><a href="tel:15308617797" style="color: #FFFF">联系电话：15308617797</a></li>
+                        
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="navbar navbar-light shadow-sm">
+                  <div class="container d-flex justify-content-between">
+                    <a href="tel:15308617797" class="navbar-brand d-flex align-items-center">
+                      <strong>粗又挺boy</strong>
+                    </a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader" aria-controls="navbarHeader"  >
+                      <span class="navbar-toggler-icon"></span>
+                    </button>
+                  </div>
+                </div>
+               
+              
+               
+                
+               
+
+
+      <div class="wlcome">
+        <div class="wl" >
+        <h4>你好，陌生人。</h4>
+        <p>没有太多华丽的介绍，照片都在下面，阳光的，可爱的，艺术照，生活照你想看的都有。初次到贵阳，短暂停留数日</p>
+        <p>照片都是本人实拍，可以视频认证</p>
+        <a href="tel:15308617797" style="color:red">电话:15308617797</a>
+         <a href="#"> 微信:15308617797 </a>
+         <a href="#"> QQ:172324092 </a>
+        
+
+      </div>
+      </div>  
+            
+        
+
+
+<!-- 照片瀑布流 -->
+<div class="grid">
+		<div class="grid-item"><img src="img/1.jpg" /></div>
+    <div class="grid-item"><img src="img/2.jpg" /></div>
+    <div class="grid-item"><img src="img/3.jpg" /></div>
+		<!-- <div class="grid-item"><img src="img/4.jpg" /></div> -->
+		<div class="grid-item"><img src="img/5.jpg" /></div>
+		<div class="grid-item"><img src="img/6.jpg" /></div>
+		<div class="grid-item"><img src="img/7.jpg" /></div>
+		<div class="grid-item"><img src="img/8.jpg" /></div>
+		<div class="grid-item"><img src="img/9.jpg" /></div>
+    <div class="grid-item"><img src="img/10.jpg" /></div>
+    <div class="grid-item"><img src="img/11.jpg" /></div>
+    <div class="grid-item"><img src="img/12.jpg" /></div>
+    <div class="grid-item"><img src="img/13.jpg" /></div>
+    <div class="grid-item"><img src="img/14.jpg" /></div>
+
+ </div>
+
+
+
+
+<!-- 照片瀑布流 -->
+ <script>
+		(function(exports){
+		 function minigrid(containerSelector, itemSelector, gutter, animate, done) {
+		 var forEach = Array.prototype.forEach;
+		 var containerEle = document.querySelector(containerSelector);
+		 var itemsNodeList = document.querySelectorAll(itemSelector);
+		 gutter = gutter || 6;
+		 containerEle.style.width = '';
+		 var containerWidth = containerEle.getBoundingClientRect().width;
+		 var firstChildWidth = itemsNodeList[0].getBoundingClientRect().width + gutter;
+		 var cols = Math.max(Math.floor((containerWidth - gutter) / firstChildWidth), 1);
+		 var count = 0;
+		 containerWidth = (firstChildWidth * cols + gutter) + 'px';
+		 containerEle.style.width = containerWidth;
+
+		 for (var itemsGutter = [], itemsPosX = [], g = 0; g < cols; g++) {
+		 itemsPosX.push(g * firstChildWidth + gutter);
+		 itemsGutter.push(gutter);
+		 }
+		 forEach.call(itemsNodeList, function(item){
+									var itemIndex = itemsGutter.slice(0).sort(function (a, b) {
+																														return a - b;
+																														}).shift();
+									itemIndex = itemsGutter.indexOf(itemIndex);
+									var posX = itemsPosX[itemIndex];
+									var posY = itemsGutter[itemIndex];
+									var transformProps = [
+																				'webkitTransform',
+																				'MozTransform',
+																				'msTransform',
+																				'OTransform',
+																				'transform'
+																				];
+									if (!animate) {
+									forEach.call(transformProps, function(transform){
+															 item.style[transform] = 'translate(' + posX + 'px,' + posY + 'px)';
+															 });  
+									}
+									itemsGutter[itemIndex] += item.getBoundingClientRect().height + gutter;
+									count = count + 1;
+									if (animate) {
+									return animate(item, posX, posY, count);
+									}
+									});
+		 var containerHeight = itemsGutter.slice(0).sort(function (a, b) {
+																										 return a - b;
+																										 }).pop();
+		 containerEle.style.height = containerHeight + 'px';
+
+		 if (typeof done === 'function'){
+		 done();
+		 }
+		 }
+		 if (typeof define === 'function' && define.amd) {
+		 define(function() { return minigrid; });
+		 } else if (typeof module !== 'undefined' && module.exports) {
+		 module.exports = minigrid;
+		 } else {
+		 exports.minigrid = minigrid;
+		 }
+		 })(this);
+		 
+</script>
+<script>
+(function() {
+		minigrid('.grid', '.grid-item', 18, null,
+						function() {
+								var d = document.querySelector('.grid');
+								d.style.opacity = 1;
+						}
+		);
+		window.addEventListener('resize', function() {
+				minigrid('.grid', '.grid-item');
+		});
+})();
+</script>
+
+
+
+
+</body>
+</html>
